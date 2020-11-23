@@ -15,8 +15,8 @@ public class RealNumber {
   }
 
   public boolean equals(RealNumber other) {
-    if (value == 0 || other.getValue() == 0) {
-      if (value == 0 && other.getValue() == 0) {
+    if (value == 0.0 || other.getValue() == 0.0) {
+      if (value == 0.0 && other.getValue() == 0.0) {
         return true;
       }
       return false;

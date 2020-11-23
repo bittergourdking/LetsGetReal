@@ -5,13 +5,13 @@ public class RationalNumber extends RealNumber {
   public RationalNumber(int nume, int deno) {
     super(0.0);//this value is ignored!
     if (deno == 0) {
-      numerator = 0;
-      denominator = 1;
-    } else {
-      numerator = nume;
-      denominator = deno;
-      reduce();
-    }
+     numerator = 0;
+     denominator = 1;
+   } else {
+     numerator = nume;
+     denominator = deno;
+     reduce();
+   }
   }
   //methods
   public double getValue() {
@@ -39,29 +39,30 @@ public class RationalNumber extends RealNumber {
   }
 
   public String toString() {
-    if (numerator == 0) {
-      return "0";
-    }
     return (numerator + "/" + denominator);
   }
 
-  /**Calculate the GCD of two integers.
-  *@param a the first integers
-  *@param b the second integer
-  *@return the value of the GCD
-  */
   private static int gcd(int a, int b) {
-    int answer = 1;
-
-
-    /*use euclids method or a better one*/
-    http://sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
-    return answer;
+    if (a == 0) {
+      return b;
+    } if (b == 0) {
+      return a;
+    }
+    int dividend = Math.max(a, b);
+    int divisor = Math.min(a, b);
+    int moddy = 0;
+    while (dividend % divisor != 0) {
+      moddy = dividend % divisor;
+      dividend = divisor;
+      divisor = moddy;
+    }
+    return divisor;
   }
 
   private void reduce() {
-    numerator = numerator / gcd(numerator, denominator);
-    denominator = denominator / gcd(numerator, denominator);
+    int gcd = gcd(numerator, denominator);
+    numerator = numerator / gcd;
+    denominator = denominator / gcd;
     if (denominator < 0) {
       numerator *= -1;
       denominator *= -1;
@@ -98,7 +99,7 @@ public class RationalNumber extends RealNumber {
     int b = lcm / other.getDenominator();
     int nume = (numerator * a) - (other.getNumerator() * b);
     RationalNumber answer = new RationalNumber(nume, lcm);
-    answer.reduce();
+    reduce();
     return answer;
   }
 }
