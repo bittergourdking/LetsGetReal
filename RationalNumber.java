@@ -53,6 +53,7 @@ public class RationalNumber extends RealNumber {
   private static int gcd(int a, int b) {
     int answer = 1;
 
+
     /*use euclids method or a better one*/
     http://sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
     return answer;
